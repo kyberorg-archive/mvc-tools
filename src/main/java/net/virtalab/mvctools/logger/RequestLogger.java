@@ -1,5 +1,6 @@
 package net.virtalab.mvctools.logger;
 
+import net.virtalab.mvctools.internal.ServletTools;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;

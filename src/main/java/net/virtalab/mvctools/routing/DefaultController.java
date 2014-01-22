@@ -1,4 +1,4 @@
-package net.virtalab.mvctools;
+package net.virtalab.mvctools.routing;
 
 import net.virtalab.mvctools.exception.NoSuchResourceException;
 import org.springframework.beans.factory.annotation.Autowired;

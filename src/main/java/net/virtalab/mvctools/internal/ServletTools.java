@@ -1,4 +1,4 @@
-package net.virtalab.mvctools.logger;
+package net.virtalab.mvctools.internal;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.BufferedReader;

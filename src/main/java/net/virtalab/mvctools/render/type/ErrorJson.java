@@ -1,4 +1,4 @@
-package net.virtalab.mvctools.type;
+package net.virtalab.mvctools.render.type;
 
 /**
  * Class is represents error object
