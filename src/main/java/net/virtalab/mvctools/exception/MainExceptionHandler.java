@@ -1,9 +1,9 @@
 package net.virtalab.mvctools.exception;
 
+import net.virtalab.mvctools.internal.exception.NoSuchResourceException;
 import net.virtalab.mvctools.logger.RequestLogger;
 import net.virtalab.mvctools.render.AppErr;
 import org.springframework.expression.AccessException;
-import org.springframework.web.HttpMediaTypeNotSupportedException;
 import org.springframework.web.HttpRequestMethodNotSupportedException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletRequest;
  */
 @ControllerAdvice
 @EnableWebMvc
-public class ExceptionAdvice  {
+public class MainExceptionHandler {
 
     @ExceptionHandler(AccessException.class)
     public ModelAndView handle403(AccessException e){
@@ -34,16 +34,10 @@ public class ExceptionAdvice  {
         return AppErr.render(e.getMessage(),405);
     }
 
-    @ExceptionHandler(HttpMediaTypeNotSupportedException.class)
-    public ModelAndView handle406(HttpMediaTypeNotSupportedException e){
-        String message = e.getMessage();
-        return AppErr.render(message,406);
-    }
-
     @ExceptionHandler(Exception.class)
-    public ModelAndView handleGeneralError(Exception e,HttpServletRequest request){
-        request.setAttribute(RequestLogger.EXCEPTION,e);
-        String message = "Internal Server Error";
-        return AppErr.render(message,500);
+    public ModelAndView catchAllExceptions(Exception e,HttpServletRequest request){
+            request.setAttribute(RequestLogger.EXCEPTION,e);
+            String message = "Internal Server Error";
+            return AppErr.render(message,500);
+        }
     }
-}

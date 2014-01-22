@@ -1,4 +1,4 @@
-package net.virtalab.mvctools.exception;
+package net.virtalab.mvctools.internal.exception;
 
 /**
  * 404

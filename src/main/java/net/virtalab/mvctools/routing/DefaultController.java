@@ -1,6 +1,6 @@
 package net.virtalab.mvctools.routing;
 
-import net.virtalab.mvctools.exception.NoSuchResourceException;
+import net.virtalab.mvctools.internal.exception.NoSuchResourceException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
