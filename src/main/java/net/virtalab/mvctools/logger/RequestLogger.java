@@ -40,6 +40,7 @@ public class RequestLogger extends HandlerInterceptorAdapter {
     @Override
     public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception {
         LogInfo info = (LogInfo) request.getAttribute(INFO);
+
         info.setResponseStatus(response.getStatus());
 
         long endTime = System.currentTimeMillis();

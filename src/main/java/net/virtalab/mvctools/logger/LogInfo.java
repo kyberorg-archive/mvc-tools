@@ -15,6 +15,8 @@ public class LogInfo {
     private String responseBody;
     private int responseStatus;
 
+    private String stackTrace;
+
     public long getTimestamp() {
         return timestamp;
     }
@@ -79,6 +81,13 @@ public class LogInfo {
     public void setEndTime(long endTime) {
         this.servedAt = endTime - this.startTime;
     }
+    public String getStackTrace() {
+        return stackTrace;
+    }
+
+    public void setStackTrace(String stackTrace) {
+        this.stackTrace = stackTrace;
+    }
 
     public String toLog() {
         StringBuilder sb = new StringBuilder();
@@ -95,6 +104,10 @@ public class LogInfo {
         sb.append("Response status: ").append(responseStatus).append(t);
         sb.append("Response body: ").append(responseBody).append(t);
         sb.append("Served in ").append(servedAt).append(" ms").append(t);
+
+        if(stackTrace!=null){
+            sb.append("Exception stack trace ").append(stackTrace).append(t);
+        }
 
         return sb.toString();
     }

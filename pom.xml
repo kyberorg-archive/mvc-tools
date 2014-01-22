@@ -64,6 +64,12 @@
           <artifactId>spring-jdbc</artifactId>
           <version>3.2.5.RELEASE</version>
       </dependency>
+      <!-- Commons for exceptions logging -->
+      <dependency>
+          <groupId>commons-lang</groupId>
+          <artifactId>commons-lang</artifactId>
+          <version>2.3</version>
+      </dependency>
       <!-- DB Drivers-->
       <dependency>
           <groupId>mysql</groupId>

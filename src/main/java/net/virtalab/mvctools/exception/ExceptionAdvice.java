@@ -9,12 +9,19 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
+import java.lang.reflect.Method;
+
 /**
  * Handles exceptions
  */
 @ControllerAdvice
 @EnableWebMvc
-public class ExceptionAdvice {
+public class ExceptionAdvice  {
+
+    //@Override
+    public void before(Method method, Object[] args, Object target) throws Throwable {
+        System.out.println("EXCEPTION");
+    }
 
     @ExceptionHandler(AccessException.class)
     public ModelAndView handle403(AccessException e){

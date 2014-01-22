@@ -18,4 +18,5 @@
     <bean id="out" class="net.virtalab.mvctools.render.AppOut" />
     <bean id="err" class="net.virtalab.mvctools.render.AppErr" />
 
+    <!-- AOP for exceptions -->
 </beans>
