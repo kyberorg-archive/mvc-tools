@@ -1,6 +1,14 @@
-*.class
+target/
 
-# Package Files #
-*.jar
-*.war
-*.ear
+#Intellij IDEA files
+.idea
+*iml
+*ipr
+*iws
+*.ids
+
+#Signed artifacts
+*.asc
+
+#KDE files
+.directory
