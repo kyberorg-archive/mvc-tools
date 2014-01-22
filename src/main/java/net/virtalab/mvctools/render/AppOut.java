@@ -44,6 +44,6 @@ public class AppOut implements View {
         response.setContentType(getContentType());
         response.getWriter().print(resultingJson);
         //Logging
-        RequestLogger.setResponseBody(resultingJson, request);
+        request.setAttribute(RequestLogger.RESPONSE_BODY,resultingJson);
     }
 }

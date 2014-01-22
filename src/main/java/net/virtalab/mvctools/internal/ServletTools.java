@@ -70,4 +70,8 @@ public class ServletTools {
         return body;
 
     }*/
+
+    public static boolean isAttributePresent(String key, HttpServletRequest request){
+        return (request.getAttribute(key) != null);
+    }
 }
