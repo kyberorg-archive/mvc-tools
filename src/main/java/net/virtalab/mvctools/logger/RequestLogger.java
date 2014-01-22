@@ -1,5 +1,7 @@
 package net.virtalab.mvctools.logger;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 import javax.servlet.http.HttpServletRequest;
@@ -8,8 +10,12 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Logger
  */
+@Service
 public class RequestLogger extends HandlerInterceptorAdapter {
     private static final String INFO = "logInfo";
+
+    @Autowired
+    private DBLogger dbLogger;
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
@@ -38,7 +44,11 @@ public class RequestLogger extends HandlerInterceptorAdapter {
         long endTime = System.currentTimeMillis();
         info.setEndTime(endTime);
 
-        System.out.println(info.toLog());
+        //TODO remove after test
+        System.out.println("End serving request");
+
+        if(dbLogger!=null){ dbLogger.log(info); }
+
     }
 
     public static void setResponseBody(String body, HttpServletRequest request){
