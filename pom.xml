@@ -93,7 +93,7 @@
       <dependency>
           <groupId>net.virtalab</groupId>
           <artifactId>vson</artifactId>
-          <version>1.2</version>
+          <version>0.3</version>
       </dependency>
       <!--Logger-->
       <dependency>
