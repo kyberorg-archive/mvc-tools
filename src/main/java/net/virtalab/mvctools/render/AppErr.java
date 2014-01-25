@@ -1,6 +1,6 @@
 package net.virtalab.mvctools.render;
 
-import net.virtalab.mvctools.logger.RequestLogger;
+import net.virtalab.mvctools.logger.RequestLoggingService;
 import net.virtalab.mvctools.render.type.ErrorJson;
 import net.virtalab.vson.Parser;
 import org.springframework.web.servlet.ModelAndView;
@@ -46,6 +46,6 @@ public class AppErr implements View {
         response.setContentType(getContentType());
         response.getWriter().print(resultingJson);
         //Logging
-        request.setAttribute(RequestLogger.RESPONSE_BODY,resultingJson);
+        request.setAttribute(RequestLoggingService.RESPONSE_BODY,resultingJson);
     }
 }

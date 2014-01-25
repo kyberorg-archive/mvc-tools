@@ -1,6 +1,6 @@
 package net.virtalab.mvctools.render;
 
-import net.virtalab.mvctools.logger.RequestLogger;
+import net.virtalab.mvctools.logger.RequestLoggingService;
 import net.virtalab.vson.Parser;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.View;
@@ -12,7 +12,7 @@ import java.util.Map;
 /**
  * Our Standard Output
  */
-
+@SuppressWarnings("UnusedDeclaration")
 public class AppOut implements View {
 
     @Override
@@ -44,6 +44,6 @@ public class AppOut implements View {
         response.setContentType(getContentType());
         response.getWriter().print(resultingJson);
         //Logging
-        request.setAttribute(RequestLogger.RESPONSE_BODY,resultingJson);
+        request.setAttribute(RequestLoggingService.RESPONSE_BODY,resultingJson);
     }
 }

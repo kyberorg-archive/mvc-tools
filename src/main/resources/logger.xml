@@ -6,7 +6,7 @@
 
     <!--Interceptor-->
     <mvc:interceptors>
-        <bean class="net.virtalab.mvctools.logger.RequestLogger" />
+        <bean class="net.virtalab.mvctools.logger.RequestLoggingService" />
     </mvc:interceptors>
 
     <!-- Async support -->

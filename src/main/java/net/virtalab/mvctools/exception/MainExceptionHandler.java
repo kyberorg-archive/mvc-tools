@@ -1,7 +1,7 @@
 package net.virtalab.mvctools.exception;
 
 import net.virtalab.mvctools.internal.exception.NoSuchResourceException;
-import net.virtalab.mvctools.logger.RequestLogger;
+import net.virtalab.mvctools.logger.RequestLoggingService;
 import net.virtalab.mvctools.render.AppErr;
 import org.springframework.expression.AccessException;
 import org.springframework.web.HttpRequestMethodNotSupportedException;
@@ -17,6 +17,7 @@ import javax.servlet.http.HttpServletRequest;
  */
 @ControllerAdvice
 @EnableWebMvc
+@SuppressWarnings("UnusedDeclaration")
 public class MainExceptionHandler {
 
     @ExceptionHandler(AccessException.class)
@@ -36,7 +37,7 @@ public class MainExceptionHandler {
 
     @ExceptionHandler(Exception.class)
     public ModelAndView catchAllExceptions(Exception e,HttpServletRequest request){
-            request.setAttribute(RequestLogger.EXCEPTION,e);
+            request.setAttribute(RequestLoggingService.EXCEPTION,e);
             String message = "Internal Server Error";
             return AppErr.render(message,500);
         }
