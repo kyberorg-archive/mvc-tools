@@ -32,7 +32,9 @@ public class RequestLoggingService extends HandlerInterceptorAdapter {
 
         info.setRequestIp(request.getRemoteAddr());
         info.setRequestUri(request.getRequestURI());
-        info.setRequestBody(ServletTools.getRequestBody(request));
+
+        String requestBody = ServletTools.getRequestBody(request);
+        info.setRequestBody(requestBody);
 
         long start = System.currentTimeMillis();
         info.setStartTime(start);

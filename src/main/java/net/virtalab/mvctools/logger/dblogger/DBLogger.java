@@ -47,7 +47,7 @@ public class DBLogger implements RequestLogger {
             if(info.getStackTrace() != null) {
                 rec.set(LogRecord.STACKTRACE,info.getStackTrace());
             }
-            rec.save();
+            rec.saveIt();
 
             new DB(this.logDb.getName()).close();
         }catch (Exception e){

@@ -28,7 +28,7 @@ public class LogRecord extends Model {
         validatePresenceOf(SERVED).message("Served at data is absent");
         validatePresenceOf(REQUEST_IP).message("Request IP is absent");
         validatePresenceOf(REQUEST_URI).message("Request URI is absent");
-        validatePresenceOf(REQUEST_BODY).message("Request Body is absent");
+        //validatePresenceOf(REQUEST_BODY).message("Request Body is absent");
         validatePresenceOf(RESPONSE_BODY).message("Response Body is absent");
         validatePresenceOf(RESPONSE_STATUS).message("Response Status is absent");
     }
