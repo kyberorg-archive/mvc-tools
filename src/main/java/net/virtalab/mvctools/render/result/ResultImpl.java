@@ -18,4 +18,5 @@ public class ResultImpl implements Result {
     }
 
     //TODO rename to Result, move two packages up. Fluent interface, method set() + static set(). For more info refer to TLZ-9.
+
 }
