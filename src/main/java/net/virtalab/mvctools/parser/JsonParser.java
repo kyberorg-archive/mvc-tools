@@ -1,5 +1,6 @@
 package net.virtalab.mvctools.parser;
 
+import com.google.gson.JsonSyntaxException;
 import net.virtalab.mvctools.render.AppErr;
 import net.virtalab.vson.Parser;
 import net.virtalab.vson.exception.NoJsonFoundException;
@@ -12,21 +13,17 @@ import java.lang.reflect.Type;
 /**
  * Parser for incoming json
  */
+@SuppressWarnings("UnusedDeclaration")
 public class JsonParser {
-    public static <T> T parse(String json, Type typeOfT) throws ParserException{
+    public static <T> T parse(String json, Type typeOfT) throws ParserException, VsonException{
         T parsedObject = null;
         ModelAndView mv = null;
         try{
             parsedObject = Parser.fromJson(json,typeOfT);
-        }catch (NoJsonFoundException e){ //add here multi-catch of SyntaxException
-            //payload must be JSON hash
+        }catch (NoJsonFoundException | JsonSyntaxException e){
             mv = AppErr.render("Payload must be valid JSON hash", 400);
         }catch (WrongJsonStructureException e1){
-            //422 + error message
             mv = AppErr.render(e1.getMessage(), 422);
-        }catch (VsonException e){
-            //internal 500
-            mv = AppErr.render("Internal Error", 500);
         }
         if(mv != null){ throw new ParserException(mv); }
         return parsedObject;
@@ -40,10 +37,11 @@ public class JsonParser {
      * @param <T> generic type of target object
      * @return object of typeOfT if parsing successful
      * @throws NoJsonFoundException when passed string is not JSON
+     * @throws com.google.gson.JsonSyntaxException when passed Json has got wrong syntax
      * @throws WrongJsonStructureException when passed string violates object structure
      * @throws VsonException when internal parser error occurred
      */
-    public static <T> T pars(String json, Type typeOfT) throws NoJsonFoundException, WrongJsonStructureException, VsonException{
+    public static <T> T pars(String json, Type typeOfT) throws NoJsonFoundException, JsonSyntaxException, WrongJsonStructureException, VsonException{
         return Parser.fromJson(json,typeOfT);
     }
 
