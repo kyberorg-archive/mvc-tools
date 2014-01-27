@@ -1,5 +1,8 @@
 package net.virtalab.mvctools.internal;
 
+import net.virtalab.mvctools.logger.RequestLogInfo;
+import net.virtalab.mvctools.logger.RequestLoggingService;
+
 import javax.servlet.http.HttpServletRequest;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -51,25 +54,20 @@ public class ServletTools {
         return body;
     }
 
-   /* public static String getResponseBody(HttpServletResponse response){
-        if(response==null){ throw new IllegalArgumentException("Response cannot be NULL"); }
-        String body;
+    /**
+     * Workaround for those situations when we used logging and therefore buffer is already clean
+     *
+     * @param request Request object
+     * @return saved at attribute body
+     */
+    public static String requestBody(HttpServletRequest request){
         try{
-            OutputStream outputStream = response.getOutputStream();
-    System.out.println("OS");
-
-            ByteArrayOutputStream byteStream = new ByteArrayOutputStream();
-    System.out.println("After VAR");
-            outputStream.write(byteStream.toByteArray());
-    System.out.println("After Write");
-            body = byteStream.toString();
-        } catch (IOException e) {
-   System.out.println("IO");
-            throw new RuntimeException(e);
+            RequestLogInfo info = (RequestLogInfo) request.getAttribute(RequestLoggingService.INFO);
+            return info.getRequestBody();
+        }catch (Exception e){
+            return "";
         }
-        return body;
-
-    }*/
+    }
 
     public static boolean isAttributePresent(String key, HttpServletRequest request){
         return (request.getAttribute(key) != null);

@@ -3,7 +3,7 @@ package net.virtalab.mvctools.logger;
 /**
  * Information that will be logged .
  */
-public class LogInfo {
+public class RequestLogInfo {
     private long timestamp;
     private long startTime;
     private long servedAt;
@@ -87,28 +87,5 @@ public class LogInfo {
 
     public void setStackTrace(String stackTrace) {
         this.stackTrace = stackTrace;
-    }
-
-    public String toLog() {
-        StringBuilder sb = new StringBuilder();
-        String t = System.getProperty("line.separator");
-        sb.append("Got request at ").append(timestamp).append(t);
-        sb.append(t);
-        sb.append("==Request data==").append(t);
-        sb.append("Client IP: ").append(requestIp).append(t);
-        sb.append("Request URI: ").append(requestUri).append(t);
-        sb.append("Request body: ").append(requestBody).append(t);
-        sb.append("Start serving at ").append(startTime).append(t);
-        sb.append(t);
-        sb.append("==Response data==").append(t);
-        sb.append("Response status: ").append(responseStatus).append(t);
-        sb.append("Response body: ").append(responseBody).append(t);
-        sb.append("Served in ").append(servedAt).append(" ms").append(t);
-
-        if(stackTrace!=null){
-            sb.append("Exception stack trace ").append(stackTrace).append(t);
-        }
-
-        return sb.toString();
     }
 }
