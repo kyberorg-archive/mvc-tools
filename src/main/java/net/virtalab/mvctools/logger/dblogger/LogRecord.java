@@ -23,13 +23,4 @@ public class LogRecord extends Model {
     public static final String RESPONSE_STATUS = "log_response_status";
     public static final String STACKTRACE= "log_stacktrace";
 
-    static {
-        validatePresenceOf(TIMESTAMP).message("TimeStamp is absent");
-        validatePresenceOf(SERVED).message("Served at data is absent");
-        validatePresenceOf(REQUEST_IP).message("Request IP is absent");
-        validatePresenceOf(REQUEST_URI).message("Request URI is absent");
-        //validatePresenceOf(REQUEST_BODY).message("Request Body is absent");
-        validatePresenceOf(RESPONSE_BODY).message("Response Body is absent");
-        validatePresenceOf(RESPONSE_STATUS).message("Response Status is absent");
-    }
 }
