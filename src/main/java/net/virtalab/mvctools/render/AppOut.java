@@ -1,7 +1,7 @@
 package net.virtalab.mvctools.render;
 
+import net.virtalab.mvctools.Result;
 import net.virtalab.mvctools.logger.RequestLoggingService;
-import net.virtalab.mvctools.render.result.Result;
 import net.virtalab.vson.Parser;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.View;
