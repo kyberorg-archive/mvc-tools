@@ -6,7 +6,7 @@ CREATE TABLE IF NOT EXISTS log (
   log_request_uri CLOB NOT NULL ,
   log_request_body CLOB NOT NULL ,
   log_response_body CLOB NOT NULL ,
-  log_response_status TINYINT NOT NULL ,
+  log_response_status SMALLINT NOT NULL ,
   log_stacktrace CLOB NULL
 );
 
