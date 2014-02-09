@@ -1,4 +1,5 @@
-CREATE  TABLE `erk`.`log` (
+USE myDatabase;
+CREATE  TABLE `log`(
   `log_id` BIGINT NOT NULL AUTO_INCREMENT ,
   `log_timestamp` BIGINT NOT NULL ,
   `log_serve_time` INT(10) NOT NULL ,
@@ -14,3 +15,6 @@ ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8
 COLLATE = utf8_general_ci
 COMMENT = 'Log Requests';
+
+GRANT ALL PRIVILEGES ON myDatabase.log TO 'log'@'%' IDENTIFIED BY 'passwd';
+FLUSH PRIVILEGES;
