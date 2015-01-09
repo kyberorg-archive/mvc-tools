@@ -1,4 +1,4 @@
-package net.virtalab.mvctools.internal;
+package net.virtalab.mvctools;
 
 import net.virtalab.mvctools.logger.RequestLogInfo;
 import net.virtalab.mvctools.logger.RequestLoggingService;
