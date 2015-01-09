@@ -1,4 +1,4 @@
-package net.virtalab.mvctools.internal;
+package net.virtalab.mvctools;
 
 import net.virtalab.mvctools.logger.RequestLogInfo;
 import net.virtalab.mvctools.logger.RequestLoggingService;
@@ -12,6 +12,7 @@ import java.io.InputStreamReader;
 /**
  * Static method what make servlet live easy
  */
+@SuppressWarnings("UnusedDeclaration")
 public class ServletTools {
     /**
      * Reads body from Request object
@@ -71,5 +72,39 @@ public class ServletTools {
 
     public static boolean isAttributePresent(String key, HttpServletRequest request){
         return (request.getAttribute(key) != null);
+    }
+
+    /**
+     * Reconstruct original requesting URL
+     *
+     * @param req Received Servlet Request
+     * @return full URL
+     */
+    public static String getFullUrl(HttpServletRequest req) {
+        String scheme = req.getScheme();             // http
+        String serverName = req.getServerName();     // hostname.com
+        int serverPort = req.getServerPort();        // 80
+        String contextPath = req.getContextPath();   // /mywebapp
+        String servletPath = req.getServletPath();   // /servlet/MyServlet
+        String pathInfo = req.getPathInfo();         // /a/b;c=123
+        String queryString = req.getQueryString();          // d=789
+
+        // Reconstruct original requesting URL
+        StringBuilder url =  new StringBuilder();
+        url.append(scheme).append("://").append(serverName);
+
+        if ((serverPort != 80) && (serverPort != 443)) {
+            url.append(":").append(serverPort);
+        }
+
+        url.append(contextPath).append(servletPath);
+
+        if (pathInfo != null) {
+            url.append(pathInfo);
+        }
+        if (queryString != null) {
+            url.append("?").append(queryString);
+        }
+        return url.toString();
     }
 }

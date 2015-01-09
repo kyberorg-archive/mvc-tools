@@ -1,6 +1,6 @@
 package net.virtalab.mvctools.logger;
 
-import net.virtalab.mvctools.internal.ServletTools;
+import net.virtalab.mvctools.ServletTools;
 import org.apache.commons.lang.exception.ExceptionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
