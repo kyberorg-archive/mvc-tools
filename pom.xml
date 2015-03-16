@@ -10,7 +10,7 @@
 
     <groupId>net.virtalab</groupId>
     <artifactId>mvc-tools</artifactId>
-    <version>1.1.1</version>
+    <version>1.2</version>
     <packaging>jar</packaging>
 
     <name>mvc-tools</name>
@@ -35,7 +35,7 @@
             <id>main</id>
             <name>Alexander Muravya</name>
             <email>asm@virtalab.net</email>
-            <timezone>UTC+4</timezone>
+            <timezone>UTC+3</timezone>
         </developer>
     </developers>
 
@@ -43,6 +43,14 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <spring.version>3.2.5.RELEASE</spring.version>
     </properties>
+
+    <distributionManagement>
+        <repository>
+            <id>maven.virtadev.net</id>
+            <name>maven.virtadev.net-releases</name>
+            <url>https://maven.virtadev.net/ext-release-local</url>
+        </repository>
+    </distributionManagement>
 
     <dependencies>
         <dependency>

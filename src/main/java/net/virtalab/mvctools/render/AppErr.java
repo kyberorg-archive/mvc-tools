@@ -21,6 +21,10 @@ public class AppErr implements View {
         return "application/json";
     }
 
+    public static ModelAndView render(int status){
+        return render("",status);
+    }
+
     public static ModelAndView render(String message,int status){
         ErrorJson json = new ErrorJson();
         json.error.http_code = status;

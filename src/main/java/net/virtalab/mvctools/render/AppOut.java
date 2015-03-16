@@ -25,6 +25,10 @@ public class AppOut implements View {
         return "application/json";
     }
 
+    public static ModelAndView render(int status){
+        return render("",status);
+    }
+
     public static ModelAndView render(Object result, int status){
 
         ModelAndView rslt = new ModelAndView();
