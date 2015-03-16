@@ -1,5 +1,12 @@
 # Release Notes for mvc-tools
 
+## Changes in version 2.0
+*   [2015-03-16] [@kyberorg](https://github.com/kyberorg):
+    Moved to Spring 4
+    [#11](https://github.com/kyberorg/mvc-tools/issues/11).
+*   [2015-03-16] [@kyberorg](https://github.com/kyberorg):
+    Separated DB related code and dependencies to another repo.
+    [#12](https://github.com/kyberorg/mvc-tools/issues/12).
 ## Changes in version 1.2
 * [2015-03-16] [@kyberorg](https://github.com/kyberorg):
   Added methods ```render(int status)``` to AppOut and AppErr
