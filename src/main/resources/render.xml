@@ -12,5 +12,6 @@
     <!-- View -->
     <bean id="out" class="net.virtalab.mvctools.render.AppOut" />
     <bean id="err" class="net.virtalab.mvctools.render.AppErr" />
+    <bean id="reply" class="net.virtalab.mvctools.render.Reply" />
 
 </beans>
