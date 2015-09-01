@@ -15,13 +15,29 @@ import java.io.InputStreamReader;
 @SuppressWarnings("UnusedDeclaration")
 public class ServletTools {
     /**
-     * Reads body from Request object
+     * Reads body (as UTF-8) from Request object
      *
      * @param request Request object
      *
      * @return Body as String
+     *
+     * @throws IOException cannot close stream
      */
-    public static String getRequestBody(HttpServletRequest request) {
+    public static String getRequestBody(HttpServletRequest request) throws IOException {
+        return getRequestBody(request, "UTF-8");
+    }
+
+    /**
+     * Reads body from Request object
+     *
+     * @param request  Request object
+     * @param encoding Body encoding
+     *
+     * @return Body as String
+     *
+     * @throws IOException cannot close stream
+     */
+    public static String getRequestBody(HttpServletRequest request, String encoding) throws IOException {
 
         if(request == null) {
             throw new IllegalArgumentException("Request cannot be NULL");
@@ -32,9 +48,10 @@ public class ServletTools {
         BufferedReader bufferedReader = null;
 
         try {
+            request.setCharacterEncoding(encoding);
             InputStream inputStream = request.getInputStream();
             if(inputStream != null) {
-                bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
+                bufferedReader = new BufferedReader(new InputStreamReader(inputStream, encoding));
                 char[] charBuffer = new char[128];
                 int bytesRead;
                 while((bytesRead = bufferedReader.read(charBuffer)) > 0) {
@@ -47,11 +64,7 @@ public class ServletTools {
             throw new RuntimeException(ex);
         } finally {
             if(bufferedReader != null) {
-                try {
-                    bufferedReader.close();
-                } catch(IOException ex) {
-                    throw new RuntimeException(ex);
-                }
+                bufferedReader.close();
             }
         }
 
