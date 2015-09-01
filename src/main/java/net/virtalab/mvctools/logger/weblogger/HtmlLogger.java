@@ -26,7 +26,7 @@ public class HtmlLogger implements RequestLogger {
         sb.append("Response body: ").append(info.getResponseBody()).append(t);
         sb.append("Served in ").append(info.getServedAt()).append(" ms").append(t);
 
-        if(info.getStackTrace() != null){
+        if(info.getStackTrace() != null) {
             sb.append("Exception stack trace ").append(info.getStackTrace()).append(t);
         }
     }

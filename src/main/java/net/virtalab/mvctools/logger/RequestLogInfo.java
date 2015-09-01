@@ -81,6 +81,7 @@ public class RequestLogInfo {
     public void setEndTime(long endTime) {
         this.servedAt = endTime - this.startTime;
     }
+
     public String getStackTrace() {
         return stackTrace;
     }

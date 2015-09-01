@@ -19,6 +19,7 @@ public class RequestLoggingService extends HandlerInterceptorAdapter {
     public static final String EXCEPTION = "exception";
     public static final String RESPONSE_BODY = "respBody";
 
+    @SuppressWarnings("SpringJavaAutowiringInspection")
     @Autowired
     @Qualifier("requestLogger")
     private RequestLogger requestLogger;
@@ -39,14 +40,14 @@ public class RequestLoggingService extends HandlerInterceptorAdapter {
         long start = System.currentTimeMillis();
         info.setStartTime(start);
 
-        request.setAttribute(INFO,info);
+        request.setAttribute(INFO, info);
 
         return true;
     }
 
     @Override
     public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception {
-        if(!ServletTools.isAttributePresent(INFO,request)){
+        if(!ServletTools.isAttributePresent(INFO, request)) {
             System.err.println("RequestLogger info object is not present. Won't logging");
             return;
         }
@@ -54,11 +55,11 @@ public class RequestLoggingService extends HandlerInterceptorAdapter {
 
         info.setResponseStatus(response.getStatus());
 
-        if(ServletTools.isAttributePresent(RESPONSE_BODY,request)){
+        if(ServletTools.isAttributePresent(RESPONSE_BODY, request)) {
             String responseBody = (String) request.getAttribute(RESPONSE_BODY);
             info.setResponseBody(responseBody);
         }
-        if(ServletTools.isAttributePresent(EXCEPTION,request)){
+        if(ServletTools.isAttributePresent(EXCEPTION, request)) {
             Exception e = (Exception) request.getAttribute(EXCEPTION);
             String trace = ExceptionUtils.getFullStackTrace(e);
             info.setStackTrace(trace);
@@ -67,7 +68,7 @@ public class RequestLoggingService extends HandlerInterceptorAdapter {
         long endTime = System.currentTimeMillis();
         info.setEndTime(endTime);
 
-        if(this.requestLogger != null){
+        if(this.requestLogger != null) {
             this.requestLogger.log(info);
         }
     }

@@ -3,15 +3,15 @@ package net.virtalab.mvctools.internal.exception;
 /**
  * 405 Exception
  */
-public class WrongMethodException extends RuntimeException {
-    private String validMethod;
+class WrongMethodException extends RuntimeException {
+    private final String validMethod;
 
-    public WrongMethodException(String validMethod){
+    public WrongMethodException(String validMethod) {
         super();
         this.validMethod = validMethod;
     }
 
-    public String getValidMethod(){
+    public String getValidMethod() {
         return this.validMethod;
     }
 }

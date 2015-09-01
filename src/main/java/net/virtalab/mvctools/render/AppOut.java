@@ -25,39 +25,39 @@ public class AppOut implements View {
         return "application/json";
     }
 
-    public static ModelAndView render(int status){
-        return render("",status);
+    public static ModelAndView render(int status) {
+        return render("", status);
     }
 
-    public static ModelAndView render(Object result, int status){
+    public static ModelAndView render(Object result, int status) {
 
         ModelAndView rslt = new ModelAndView();
         rslt.addObject(OUT, result);
-        rslt.addObject(STATUS,status);
+        rslt.addObject(STATUS, status);
         rslt.setViewName("out");
 
         return rslt;
     }
 
-    public static ModelAndView render(Object result){
-        return render(result,200);
+    public static ModelAndView render(Object result) {
+        return render(result, 200);
     }
 
-    public static ModelAndView render(Result result){
-        return render(result.get(),result.getStatus());
+    public static ModelAndView render(Result result) {
+        return render(result.get(), result.getStatus());
     }
 
     @Override
     public void render(Map<String, ?> model, HttpServletRequest request, HttpServletResponse response) throws Exception {
         Object outObj = model.get(OUT);
         int status = (Integer) model.get(STATUS);
-        Class type =  outObj.getClass();
+        Class type = outObj.getClass();
 
-        String resultingJson = Parser.toJson(outObj,type);
+        String resultingJson = Parser.toJson(outObj, type);
         response.setStatus(status);
         response.setContentType(getContentType());
         response.getWriter().print(resultingJson);
         //Logging
-        request.setAttribute(RequestLoggingService.RESPONSE_BODY,resultingJson);
+        request.setAttribute(RequestLoggingService.RESPONSE_BODY, resultingJson);
     }
 }
