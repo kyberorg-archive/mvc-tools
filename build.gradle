@@ -54,12 +54,28 @@ compileJava {
     targetCompatibility = javaLevel
 }
 
+
 jar {
     baseName = packageName
+    version = packageVersion
 }
 
 //To disable tests - uncomment line below
 //build.dependsOn.remove("check");
+
+task sourcesJar(type: Jar, dependsOn: classes) {
+    baseName = packageName
+    version = packageVersion
+    classifier = 'sources'
+    from sourceSets.main.allSource
+}
+
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    baseName = packageName
+    version = packageVersion
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+}
 
 //publish version to bintray
 publishing {
@@ -84,9 +100,21 @@ bintray {
         vcsUrl = 'git@github.com:virtalab/mvc-tools.git'
         version {
             name = packageVersion
-            desc = 'Version decription'
+            desc = 'Several fixes and improvements, see release notes for more info'
             released = new Date()
-            //vcsTag = '0.1'
+            vcsTag = '2.2'
         }
     }
 }
+
+task preRelease { println 'Making Javadocs and Sources' }
+task release {}
+
+preRelease.dependsOn build
+preRelease.dependsOn javadocJar
+preRelease.dependsOn sourcesJar
+
+release.dependsOn preRelease
+release.mustRunAfter preRelease
+release.dependsOn bintrayUpload
+

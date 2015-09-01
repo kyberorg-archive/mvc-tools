@@ -1,5 +1,24 @@
 # Release Notes for mvc-tools
-
+## Changes in version 2.2 (2015-09-01)
+*   [2015-09-01] [@kyberorg](https://github.com/kyberorg):
+    Moved to Gradle and distribution via bintray and JCenter
+    [#19](https://github.com/kyberorg/mvc-tools/issues/19).
+*   [2015-09-01] [@kyberorg](https://github.com/kyberorg):
+    Updated to Spring 4.2.0
+    [#19](https://github.com/kyberorg/mvc-tools/issues/19).
+*   [2015-09-01] [@kyberorg](https://github.com/kyberorg):
+    Added webapp for testing
+*   [2015-09-01] [@kyberorg](https://github.com/kyberorg):
+    Added encoding parameter to ```ServletTools.getRequestBody()``` method
+    [#16](https://github.com/kyberorg/mvc-tools/issues/16).
+*   [2015-09-01] [@kyberorg](https://github.com/kyberorg):
+    ```ServletTools.requestBody(HttpServletRequest)``` renamed to ```ServletTools.requestBodyAfterLogger(HttpServletRequest)```
+    [#17](https://github.com/kyberorg/mvc-tools/issues/17).
+## Changes in version 2.1 (2015-03-23)
+*   [2015-03-23] [@kyberorg](https://github.com/kyberorg):
+    Added new Renderer with builder pattern ```Reply```
+    [#13](https://github.com/kyberorg/mvc-tools/issues/13).
+    
 ## Changes in version 2.0
 *   [2015-03-16] [@kyberorg](https://github.com/kyberorg):
     Moved to Spring 4
