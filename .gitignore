@@ -1,4 +1,8 @@
+#Maven builds
 target/
+#Gradle builds
+build/
+.gradle/
 
 #Intellij IDEA files
 .idea
