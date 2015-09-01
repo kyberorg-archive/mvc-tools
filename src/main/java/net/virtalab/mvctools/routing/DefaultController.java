@@ -21,11 +21,11 @@ import java.util.Set;
 @Controller
 @Qualifier("default")
 public class DefaultController {
-    private RequestMappingHandlerMapping handlerMapping;
+    private final RequestMappingHandlerMapping handlerMapping;
 
     @SuppressWarnings("SpringJavaAutowiringInspection")
     @Autowired
-    public DefaultController(RequestMappingHandlerMapping handlerMapping){
+    public DefaultController(RequestMappingHandlerMapping handlerMapping) {
         this.handlerMapping = handlerMapping;
     }
 
@@ -34,14 +34,14 @@ public class DefaultController {
         String uri = request.getRequestURI();
         String method = request.getMethod();
 
-        Map<RequestMappingInfo,HandlerMethod> allMappings =  this.handlerMapping.getHandlerMethods();
+        Map<RequestMappingInfo, HandlerMethod> allMappings = this.handlerMapping.getHandlerMethods();
 
         boolean resourceFound = false;
 
-        for (RequestMappingInfo mapping : allMappings.keySet()) {
+        for(RequestMappingInfo mapping : allMappings.keySet()) {
             Set<String> mappingUris = mapping.getPatternsCondition().getPatterns();
-            for (String mappingUri : mappingUris) {
-                if(uri.equalsIgnoreCase(mappingUri)){
+            for(String mappingUri : mappingUris) {
+                if(uri.equalsIgnoreCase(mappingUri)) {
                     resourceFound = true;
                     break;
                 }
@@ -49,7 +49,7 @@ public class DefaultController {
         }
 
         //is 404 or 405 here ?
-        if(resourceFound){
+        if(resourceFound) {
             //405
             throw new HttpRequestMethodNotSupportedException(method);
         } else {

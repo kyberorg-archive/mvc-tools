@@ -11,32 +11,38 @@ public class Result {
     private Object result;
     private int status;
 
-    public Result(){
+    public Result() {
         self = this;
     }
 
-    public static Result set(Object rslt, int status){
+    public static Result set(Object rslt, int status) {
         self = new Result();
         self.result = rslt;
         self.status = status;
         return self;
     }
 
-    public static Result set(Object rslt){
+    public static Result set(Object rslt) {
         self = new Result();
         self.result = rslt;
         return self;
     }
 
-    public Result status(int status){
+    public static Result set(int status) {
+        self = new Result();
+        self.status = status;
+        return self;
+    }
+
+    public Result status(int status) {
         return this;
     }
 
-    public Object get(){
+    public Object get() {
         return this.result;
     }
 
-    public int getStatus(){
+    public int getStatus() {
         return this.status;
     }
 }

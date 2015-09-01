@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 public class StdOutRequestLogger implements RequestLogger {
 
     @Async
-    public void log(RequestLogInfo info){
+    public void log(RequestLogInfo info) {
         StringBuilder sb = new StringBuilder();
         String t = System.getProperty("line.separator");
 
@@ -29,10 +29,10 @@ public class StdOutRequestLogger implements RequestLogger {
         sb.append("Response body: ").append(info.getResponseBody()).append(t);
         sb.append("Served in ").append(info.getServedAt()).append(" ms").append(t);
 
-        if(info.getStackTrace() != null){
+        if(info.getStackTrace() != null) {
             sb.append("Exception stack trace ").append(info.getStackTrace()).append(t);
         }
 
-        System.out.println("Request information "+sb.toString());
+        System.out.println("Request information " + sb.toString());
     }
 }

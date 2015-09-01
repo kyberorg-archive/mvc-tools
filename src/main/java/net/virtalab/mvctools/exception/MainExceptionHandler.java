@@ -21,24 +21,24 @@ import javax.servlet.http.HttpServletRequest;
 public class MainExceptionHandler {
 
     @ExceptionHandler(AccessException.class)
-    public ModelAndView handle403(AccessException e){
+    public ModelAndView handle403(AccessException e) {
         return AppErr.render(e.getMessage(), 403);
     }
 
     @ExceptionHandler(NoSuchResourceException.class)
-    public ModelAndView handle404(NoSuchResourceException e){
+    public ModelAndView handle404(NoSuchResourceException e) {
         return AppErr.render(e.getMessage(), 404);
     }
 
     @ExceptionHandler(HttpRequestMethodNotSupportedException.class)
-    public ModelAndView handleMethodError(HttpRequestMethodNotSupportedException e){
-        return AppErr.render(e.getMessage(),405);
+    public ModelAndView handleMethodError(HttpRequestMethodNotSupportedException e) {
+        return AppErr.render(e.getMessage(), 405);
     }
 
     @ExceptionHandler(Exception.class)
-    public ModelAndView catchAllExceptions(Exception e,HttpServletRequest request){
-            request.setAttribute(RequestLoggingService.EXCEPTION,e);
-            String message = "Internal Server Error";
-            return AppErr.render(message,500);
-        }
+    public ModelAndView catchAllExceptions(Exception e, HttpServletRequest request) {
+        request.setAttribute(RequestLoggingService.EXCEPTION, e);
+        String message = "Internal Server Error";
+        return AppErr.render(message, 500);
     }
+}
