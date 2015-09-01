@@ -28,6 +28,12 @@ public class Result {
         return self;
     }
 
+    public static Result set(int status) {
+        self = new Result();
+        self.status = status;
+        return self;
+    }
+
     public Result status(int status) {
         return this;
     }
