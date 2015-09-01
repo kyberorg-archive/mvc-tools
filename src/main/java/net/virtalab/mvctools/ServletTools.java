@@ -66,7 +66,7 @@ public class ServletTools {
      *
      * @return saved at attribute body
      */
-    public static String requestBody(HttpServletRequest request) {
+    public static String requestBodyAfterLogger(HttpServletRequest request) {
         try {
             RequestLogInfo info = (RequestLogInfo) request.getAttribute(RequestLoggingService.INFO);
             return info.getRequestBody();
